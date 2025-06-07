@@ -42,7 +42,7 @@ android {
                     from(components["release"])
                     groupId = "com.github.sina-tabriziyan"
                     artifactId = "STools"
-                    version = "0.0.1"
+                    version = "1.0.0"
                 }
             }
         }
