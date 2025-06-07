@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sina.tools"
+    namespace = "com.sina.stools.library"
     compileSdk = 35
 
     defaultConfig {
