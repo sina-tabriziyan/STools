@@ -4,3 +4,18 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.android.library) apply false
 }
+
+subprojects {
+    afterEvaluate {
+        if (plugins.hasPlugin("maven-publish")) {
+            configure<PublishingExtension> {
+                repositories {
+                    maven {
+                        name = "JitPack"
+                        url = uri("https://jitpack.io")
+                    }
+                }
+            }
+        }
+    }
+}
