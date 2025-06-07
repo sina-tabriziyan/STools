@@ -1,0 +1,9 @@
+jdk:
+  - openjdk17                     # match your code’s Java/Kotlin requirements
+
+install:
+  - ./gradlew clean assembleRelease -x test
+
+caches:
+  - ~/.gradle/wrapper
+  - ~/.gradle/caches

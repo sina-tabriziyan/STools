@@ -16,9 +16,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://jitpack.io")
+
     }
 }
 
 rootProject.name = "STools"
 include(":app")
- 
+include(":tools")

@@ -1,22 +1,18 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     id("maven-publish")
-
 }
 
 android {
-    namespace = "com.sina.stools"
+    namespace = "com.sina.tools"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.sina.stools"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -39,7 +35,18 @@ android {
         buildConfig = true
         viewBinding = true
     }
-
+    afterEvaluate {
+        publishing {
+            publications {
+                create<MavenPublication>("release") {
+                    from(components["release"])
+                    groupId = "com.github.sina-tabriziyan"
+                    artifactId = "STools"
+                    version = "0.0.1"
+                }
+            }
+        }
+    }
 }
 
 dependencies {
@@ -47,8 +54,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
